@@ -1,19 +1,42 @@
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	is_sorted(stack **root)
 {
-	stack	*a;
-	stack	*b;
+	stack *curr = *root;
+	while (curr != NULL)
+	{
+		if (curr->value > curr->next->value)
+			return (1);
+		curr = curr->next;
+	}
+	return (0);
+}
+
+int	main(int ac, char** av)
+{
+	stack* a;
+	stack* b;
 
 
 	a = NULL;
 	b = NULL;
+  char **argv;
+
 	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return (1);
+		return (12);
 	else if (ac == 2)
-		av = ft_split(av[1]);
-	// the last parameter used to see if we need to free the 'av' or not
-	stack_init(&a, av + 1, ac == 2);
-		
+		argv = ft_split(av[1], ' ');
+	else if (ac > 2)
+		argv = (av + 1);
+	stack_init(&a, &argv, ac == 2);
+
+
+	while (is_sorted(&a))
+	{
+		if (a->value > a->next->value)
+		{
+			sa(&a);
+		}
+	}
 	return (0);
 }

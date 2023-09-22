@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 
 typedef struct	stack
 {
@@ -15,21 +16,24 @@ typedef struct	stack
 	int		push_price;
 	bool		above_median;
 	bool		cheapest;
-	struct node	*target_node;
-	struct node	*next;
-	struct node	*prev;
+	struct stack	*target_node;
+	struct stack	*next;
+	struct stack	*prev;
 }			stack;
 
-char	**ft_split(char *str);
-long	ft_atol(char **str);
+char	**ft_split(char *str, char delimiter);
+long	ft_atol(char *str);
 void    insert_value(stack **node, int value);
-void    stack_init(stack **node, char **av, bool to_free);
+void    stack_init(stack **node, char ***av, bool to_free);
+void    sa(stack **node);
 
 // handle errors
 bool    duplicated(stack *node, int value);
 bool    syntax_checker(char **av);
-void    free_error(char **av, bool to_free);
-void    free_matrix(char **av);
+void    free_error(char ***av, bool to_free);
+void    free_matrix(char ***av);
+
+
 
 
 
