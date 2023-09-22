@@ -1,33 +1,5 @@
 #include "push_swap.h"
 
-int	not_sorted(stack **root)
-{
-	stack *curr = *root;
-	while (curr->next != NULL)
-	{
-		if (curr->value > curr->next->value)
-		{
-			return (1);
-
-		}
-		curr = curr->next;
-	}
-	return (0);
-}
-
-int is_bigger(stack** root)
-{
-    stack*  curr;
-    curr = *root;
-
-    while (curr != NULL)
-    {
-        if ((*root)->value < curr->value)
-            return (0);
-        curr = curr->next;
-    }
-    return (1);
-}
 
 int	main(int ac, char** av)
 {
@@ -47,28 +19,8 @@ int	main(int ac, char** av)
 		argv = (av + 1);
 	stack_init(&a, &argv, ac == 2, &size);
 
-
-	while (size == 3 && not_sorted(&a))
-	{
-
-		if (is_bigger(&a))
-		{
-			ra(&a);
-		}
-		if (a->value > a->next->value)
-		{
-			sa(&a);
-		}
-		if (a->next->value > a->next->next->value)
-		{
-			rra(&a);
-		}
-		if (a->value > a->next->next->value)
-		{
-			ra(&a);
-		}
-
-	}
+	if (size == 3)
+		tiny_sort(&a);
 
 	for (stack *curr = a; curr != NULL; curr = curr->next)
 		printf("value -> %d\n", curr->value);

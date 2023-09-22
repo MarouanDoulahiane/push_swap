@@ -40,6 +40,10 @@ void    free_error(char ***av, bool to_free);
 void    free_matrix(char ***av);
 
 
+// Sort Algorithm
+void   tiny_sort(stack** a);
+
+
 
 
 
