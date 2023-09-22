@@ -14,15 +14,15 @@ int	is_sorted(stack **root)
 
 int	main(int ac, char** av)
 {
-	stack* a;
-	stack* b;
+	stack*  a;
+	stack*  b;
+    char**  argv;
+    int     size;
 
 
 	a = NULL;
 	b = NULL;
-  char **argv;
-
-	if (ac == 1 || (ac == 2 && !av[1][0]))
+ 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (12);
 	else if (ac == 2)
 		argv = ft_split(av[1], ' ');
