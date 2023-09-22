@@ -11,21 +11,27 @@
 typedef struct	stack
 {
 	int		value;
-	int		curr_position;
-	int		final_index;
-	int		push_price;
-	bool		above_median;
-	bool		cheapest;
-	struct stack	*target_node;
 	struct stack	*next;
-	struct stack	*prev;
 }			stack;
 
 char	**ft_split(char *str, char delimiter);
 long	ft_atol(char *str);
 void    insert_value(stack **node, int value);
-void    stack_init(stack **node, char ***av, bool to_free);
-void    sa(stack **node);
+void    stack_init(stack **node, char ***av, bool to_free, int* size);
+
+// moves
+void    sa(stack **a);
+void	sb(stack** b);
+void 	ss(stack** a, stack** b);
+void	pa(stack** a, stack** b);
+void	pb(stack** a, stack** b);
+void	ra(stack** a);
+void	rb(stack** b);
+void	rr(stack** a, stack** b);
+void	rra(stack** a);
+void	rrb(stack** b);
+void	rrr(stack** a, stack** b);
+
 
 // handle errors
 bool    duplicated(stack *node, int value);

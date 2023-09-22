@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	stack_init(stack** node, char*** av, bool to_free)
+void	stack_init(stack** node, char*** av, bool to_free, int* size)
 {
 	int	i;
 	long	nb;
@@ -16,6 +16,7 @@ void	stack_init(stack** node, char*** av, bool to_free)
 			free_error(av, to_free);
 		insert_value(node, (int)nb);
 		i++;
+        *size += 1;
 	}
 	if (to_free)
 		free_matrix(av);
