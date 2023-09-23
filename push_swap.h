@@ -12,6 +12,7 @@ typedef struct	stack
 {
 	int		value;
 	struct stack	*next;
+	struct stack	*target_node;
 }			stack;
 
 char	**ft_split(char *str, char delimiter);
