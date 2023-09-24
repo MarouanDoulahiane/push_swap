@@ -87,6 +87,7 @@ void	set_target_node(stack *a, stack *b)
 			b->target_node = find_smallest(a);
 		else
 			b->target_node = target_value;
-		b = b->next;
+		b = b->next; 
+		
 	}
 }
