@@ -3,65 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   stack_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdoulahi <mdoulahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 13:14:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/15 13:14:11 by marvin           ###   ########.fr       */
+/*   Created: 2023/11/22 22:17:44 by mdoulahi          #+#    #+#             */
+/*   Updated: 2023/11/27 12:05:21 by mdoulahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "header.h"
 
-stack	*find_last(stack *a)
+int	stack_size(t_stack **root)
 {
-	while (a->next)
-		a = a->next;
-	return (a);
-}
-
-void	append_node(stack **a, int val)
-{
-	stack	*node;
-	stack	*last;
-
-	node = malloc(sizeof(stack));
-	if (!node)
-		return ;
-	node->next = NULL;
-	node->val = val;
-	if (!*a)
-	{
-		*a = node;
-	}
-	else
-	{
-		last = find_last(*a);
-		last->next = node;
-	}
-}
-
-bool	stack_sorted(stack *a)
-{
-	while (a->next)
-	{
-		if (a->val > a->next->val)
-			return (false);
-		a = a->next;
-	}
-	return (true);
-}
-
-size_t	stack_len(stack *a)
-{
-	size_t	i;
+	int		i;
+	t_stack	*tmp;
 
 	i = 0;
-	if (a == NULL)
-		exit(1);
-	while (a)
+	tmp = *root;
+	while (tmp)
 	{
+		tmp->index = i;
+		tmp = tmp->next;
 		i++;
-		a = a->next;
 	}
 	return (i);
+}
+
+void	_free_list(t_stack *a)
+{
+	t_stack	*tmp;
+
+	tmp = a;
+	while (tmp)
+	{
+		a = a->next;
+		free(tmp);
+		tmp = a;
+	}
+}
+
+void	check_len(char *str, char **matrix, t_stack *a)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (str[i] && (str[i] == '-' || str[i] == '+'))
+		i++;
+	while (str[i + j] && str[i + j] == '0')
+		j++;
+	while (str[i + j])
+		i++;
+	if (i > 12)
+	{
+		free_matrix(matrix);
+		_free_list(a);
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }
