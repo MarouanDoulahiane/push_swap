@@ -57,7 +57,7 @@ The program supports the following actions:
 
 ### Used Algorithm
 
-The program uses a recursive quick-sort algorithm with the median as the pivot to achieve efficient sorting. If the number of elements to be sorted is 3 or less, a different sorting function is used. Two recursive functions are employed to sort the stacks: `quick_sort_a` and `quick_sort_b`.
+The program uses a `longest increasing subsequence` algorithm to push the numbers that are excluded from the subsequence to `stack B` to push them back to `stack A` using the cheapest moves after that we inset the numbers from `stack B` to A using the same way and don't forget the numbers inside the `stack A` already sorted because all number in the sequence is sorted.
 
 ## 📋 Testing
 
